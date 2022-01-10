@@ -1,0 +1,109 @@
+<div class= "container mt-5">
+    <div class="row">
+        <div class="col-lg-12"> 
+            <div class="card">
+                <div class="card-body text-center">
+                 <h3 class="titulo">THOMAS GRENG</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <div class="row mt-4">
+        <div class="clo lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="titulo">{{accion|uppercase}} DOCUMENTO</h5>
+                        
+                    <form [formGroup]="form" (ngSubmit)="guardarCaja()">
+                                      <div class="input-group mb-3">
+                                      <span class="input-group-text">
+                                      <i class="fas fa-file"
+                                          [class.blue-icon]="this.form.get('nombredocumento')?.valid"
+                                          [class.red-icon]="this.form.get('nombredocumento')?.invalid && this.form.get('nombredocumento')?.touched"></i>
+                                      </span>
+                                      <input formControlName="nombredocumento" type="text" class="form-control" placeholder="Nombre Documento" aria-label="Username" aria-describedby="basic-addon1">
+                                      </div>
+
+                                      <div class="input-group mb-3">
+                                          <span class="input-group-text">
+                                            <i class="fas fa-folder-open"
+                                            [class.blue-icon]="this.form.get('ubicacion')?.valid"
+                                            [class.red-icon]="this.form.get('ubicacion')?.invalid && this.form.get('ubicacion')?.touched"></i>
+                                          </span>
+                                          <input formControlName="ubicacion" type="text" class="form-control" placeholder="Ubicacion" aria-label="Username" aria-describedby="basic-addon1">
+                                      </div>
+                            
+                                  <div class="row">
+                                       <div class="col-lg-4">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon1">
+                                                <i class="fas fa-cogs"
+                                                [class.blue-icon]="this.form.get('tamanio')?.valid"
+                                                [class.red-icon]="this.form.get('tamanio')?.invalid && this.form.get('tamanio')?.touched"></i>
+                                            </span>
+                                            <input formControlName="tamanio" type="text" class="form-control" placeholder="Tamaño" aria-label="Username" aria-describedby="basic-addon1">
+                                        </div> 
+                                       </div> 
+                                  
+                                      <div class="col-lg-4">
+                                       <div class="input-group mb-3">
+                                       <span class="input-group-text" id="basic-addon1">
+                                           <i class="fas fa-file-contract"
+                                           [class.blue-icon]="this.form.get('extension')?.valid"
+                                           [class.red-icon]="this.form.get('extension')?.invalid && this.form.get('extension')?.touched"></i> 
+                                       </span>
+                                      <input formControlName="extension" type="text" class="form-control" placeholder="Extension" aria-label="Username" aria-describedby="basic-addon1">
+                                      </div>
+                                      </div>
+
+                                      <div class="col-lg-4">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon1">
+                                                <i class="fas fa-id-card"
+                                                [class.blue-icon]="this.form.get('codigo')?.valid"
+                                                [class.red-icon]="this.form.get('codigo')?.invalid && this.form.get('codigo')?.touched"></i> 
+                                            </span>
+                                            <input formControlName="codigo" type="text" class="form-control" placeholder="Codigo Unico" aria-label="Username" aria-describedby="basic-addon1">
+                                            </div>
+                                           </div>                                  
+                                       </div>  
+
+                                    <div class="d-grid gap-2">
+                                        <button [disabled]="this.form.invalid" type="submit" class="btn btn-success btn-lg">
+                                            <i class="fas fa-file-import"></i> &nbsp; GUARDAR DOCUMENTO</button>
+                                    </div>
+                        </form>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4"> 
+    <div class="clo lg-6">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="titulo">LISTA DOCUMENTOS</h5>
+            <table class="table">
+                <tr *ngFor="let caja of listCaja">
+                    <td> </td>
+                    <td>{{caja.nombredocumento}}</td>
+                    <td>{{caja.ubicacion}}</td>
+                    <td>{{caja.tamanio}}</td>
+                    <td>{{caja.extension}}</td>
+                    <td>{{caja.codigo}}</td>
+                    <td>
+                        <i (click)="editarCaja(caja)" class="far fa-edit text-info"></i>
+                    </td>
+                    <td>
+                        <i (click)="eliminarCaja(caja.id)" class="far fa-trash-alt text-danger"></i>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+ </div>
+ </div>
+     <div class="clo lg-6">
+     
+    </div>
+</div>     
